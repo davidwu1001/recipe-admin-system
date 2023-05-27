@@ -11,6 +11,8 @@ from context_processors import security_context_processor
 app = Flask(__name__)
 # 导入配置
 app.config.from_object(config)
+app.config['FLASK_ADMIN_SWATCH'] = 'yeti'
+
 # db绑定app
 db.init_app(app)
 # migrate绑定app,db

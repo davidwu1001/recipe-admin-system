@@ -1,6 +1,8 @@
 #配置文件
 SECRET_KEY= "sajfasjkfaksjfbajb"
 
+# admin主题
+FLASK_ADMIN_SWATCH = 'cerulean'
 #mysql 开发环境
 # HOSTNAME = "127.0.0.1"
 # PORT = 3306
