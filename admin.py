@@ -167,13 +167,14 @@ class OrderView(ModelView):
         'date_created': '创建日期',
         'ingredients': '订单项',
         'user_id': '创建用户',
+        'address': "送货地址",
     }
     column_formatters = {
         'user_id': lambda v, c, m, p: m.create_user.nickName if m.create_user else None,
-        'ingredients': lambda v, c, m, p: [ingredient.name for ingredient in m.ingredients]
+        'ingredients': lambda v, c, m, p: [ingredient.name for ingredient in m.ingredients],
     }
-    column_list = ['id', 'date_created', 'user_id', 'ingredients']
-    form_columns = ['date_created', 'user_id', 'ingredients']
+    column_list = ['id', 'date_created', 'user_id', 'ingredients','address']
+    form_columns = ['date_created', 'user_id', 'ingredients','address']
 
 
 class InteractionView(ModelView):
@@ -193,15 +194,15 @@ class InteractionView(ModelView):
         'user_id': '用户',
         'ingredient_id': "食材",
         'view_count': "浏览次数",
-        'is_favorite': "收藏",
+        'collect_count': "收藏次数",
         'purchase_count': '下单次数'
     }
     column_formatters = {
         'user_id': lambda v, c, m, p: m.user.nickName if m.user else None,
         'ingredient_id': lambda v, c, m, p: m.ingredient.name if m.ingredient else None
     }
-    column_list = ['id', 'user_id', 'ingredient_id', 'view_count', 'is_favorite', 'purchase_count', ]
-    form_columns = ['view_count', 'is_favorite', 'purchase_count', 'user_id', 'ingredient_id']
+    column_list = ['id', 'user_id', 'ingredient_id', 'view_count', 'collect_count', 'purchase_count', ]
+    form_columns = ['view_count', 'collect_count', 'purchase_count', 'user_id', 'ingredient_id']
 
 
 admin.add_view(RecipeView(RecipeModel, db.session, name="食谱", url='/admin/recipe'))
